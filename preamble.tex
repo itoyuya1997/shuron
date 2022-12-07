@@ -1,0 +1,163 @@
+%%余白設定
+\usepackage[top=25truemm,bottom=20truemm,left=20truemm,right=25truemm]{geometry}
+
+
+
+%ヘッダー・フッター
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{\leftmark}
+\rhead{\bf\thepage}
+\cfoot{}
+\renewcommand{\chaptermark}[1]{\markboth{第\ \normalfont\thechapter\ 章\quad~#1}{}}
+
+%%見出し深さ変更
+\setcounter{tocdepth}{2}
+%%章，節表記変更
+\renewcommand{\prechaptername}{第}
+\renewcommand{\postchaptername}{章}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+% \renewcommand{\thesubsubsection}{(\alph{subsubsection})}
+
+%%数式
+\usepackage{amsthm,amsmath, amssymb}
+
+%%図
+\usepackage[dvipdfmx]{graphicx}
+\graphicspath{ {./figs/} }
+\usepackage[font={small}]{caption}
+\usepackage[dvipdfmx]{color}
+
+%%サブキャプション入りの図貼り込み
+\usepackage[format=hang,font=small,labelfont=bf,labelsep=space]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
+
+%%引用部を上付きカギ括弧に
+\usepackage{cite}
+\makeatletter 
+\def\@cite#1{\textsuperscript{#1)}}
+\renewcommand*{\@biblabel}[1]{#1)\hfill}%
+\makeatother 
+
+%%参照文献URL表記
+\usepackage{url}
+\urlstyle{same}
+
+%%[H]使用
+\usepackage{here}
+
+%%%%% cref関連
+\usepackage{cleveref}
+\crefname{equation}{式}{式}% {環境名}{単数形}{複数形} \crefで引くときの表示
+\crefname{figure}{図}{図}% {環境名}{単数形}{複数形} \crefで引くときの表示
+\crefname{table}{表}{表}% {環境名}{単数形}{複数形} \crefで引くときの表示
+\crefname{algorithm}{Algorithm}{Algorithm}
+\newcommand{\crefpairconjunction}{と}
+\newcommand{\crefrangeconjunction}{から}
+\newcommand{\crefmiddleconjunction}{，}
+\newcommand{\creflastconjunction}{，および}
+\crefname{chapter}{}{}
+\creflabelformat{chapter}{#2#1#3章}
+\crefname{section}{}{}
+\creflabelformat{section}{#2#1#3節}
+\crefname{subsection}{}{}
+\creflabelformat{subsection}{#2#1#3小節}
+\crefname{subsubsection}{}{}
+\creflabelformat{subsubsection}{#2#1#3項}
+
+%%式番号を通し番号に，コメントアウトで節番号付与
+\makeatletter
+\renewcommand{\theequation}{%
+\arabic{equation}}
+\makeatother
+
+%%subcaptionの引用時に()をつける
+\captionsetup[subfigure]{labelformat=simple}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+
+%%Timesフォント
+\usepackage{times}
+
+%%角度記号パッケージ
+\usepackage{mathcomp}
+
+%&table内で\Hlineとすれば太線に
+%表作成はこれとかhttps://www.tablesgenerator.com/latex_tables#
+\makeatletter
+\def\Hline{%
+\noalign{\ifnum0=`}\fi\hrule \@height 1pt \futurelet
+\reserved@a\@xhline}
+\makeatother
+
+%%表セル結合
+\usepackage{multirow}
+
+%%単位コマンド簡略化
+\newcommand{\m}{\mathrm{m}}
+\newcommand{\cm}{\mathrm{cm}}
+\newcommand{\km}{\mathrm{km}}
+\newcommand{\mm}{\mathrm{mm}}
+\newcommand{\s}{\mathrm{s}}
+\newcommand{\g}{\mathrm{g}}
+\newcommand{\kg}{\mathrm{kg}}
+\newcommand{\N}{\mathrm{N}}
+\newcommand{\kN}{\mathrm{kN}}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand{\rot}{\mathrm{rot}}
+
+%%アブスト体裁調整
+\renewcommand{\abstractname}{\if@english Abstract\else 論文要旨\fi}
+\makeatletter
+\renewenvironment{abstract}{%
+\titlepage
+% \null     %アブスト上詰め
+\vfil
+\@beginparpenalty\@lowpenalty
+\begin{center}%
+    \headfont {\fontsize{13pt}{13pt}\selectfont \abstractname}
+    \@endparpenalty\@M
+\end{center}}%
+{\par\vfil\null\endtitlepage}
+
+%アブスト余白調整
+\def\@makechapterhead#1{%
+  \vspace*{2\Cvs}% 欧文は50pt，章見出しの上空白
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        \huge\headfont \@chapapp\thechapter\@chappos
+        \quad \nobreak % 欧文は20pt
+    \fi
+    \interlinepenalty\@M
+    \huge \headfont #1\nobreak
+    \vskip 2\Cvs
+    }} % 欧文は40pt
+\makeatother
+
+%文字数と行数
+\makeatletter
+\def\mojiparline#1{
+    \newcounter{mpl}
+    \setcounter{mpl}{#1}
+    \@tempdima=\linewidth
+    \advance\@tempdima by-\value{mpl}zw
+    \addtocounter{mpl}{-1}
+    \divide\@tempdima by \value{mpl}
+    \advance\kanjiskip by\@tempdima
+    \advance\parindent by\@tempdima
+}
+\makeatother
+\def\linesparpage#1{
+    \baselineskip=\textheight
+    \divide\baselineskip by #1
+}
+
+%目次のインデントを調整
+\makeatletter
+\renewcommand*{\l@section} {\@dottedtocline{1}{1zw}{2zw}}
+\renewcommand*{\l@subsection} {\@dottedtocline{2}{2zw}{4zw}}
+\renewcommand*{\l@subsubsection} {\@dottedtocline{3}{3zw}{6zw}}
+\makeatother
+
+%表紙作成
