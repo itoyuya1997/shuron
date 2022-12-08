@@ -1,0 +1,98 @@
+\documentclass[11truept,a4paper,onecolumn,dvipdfmx]{jsreport}
+\input preamble.tex
+
+
+%目次にヘッダー表示
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{fancy}}}  
+\thispagestyle{fancy}{
+    \lhead{目次}
+    \pagenumbering{roman}
+    \rhead{\bf\thepage}
+    \cfoot{}
+}
+
+
+\begin{document}
+\mojiparline{40}
+\linesparpage{35}
+
+
+\begin{titlepage}
+    \vspace{15mm}
+    \begin{wrapfigure}{r}{0.45\linewidth}
+        \centering
+        \hspace{25mm}
+        \includesvg[keepaspectratio,width=0.45\linewidth]{KUlogo.svg}
+    \end{wrapfigure}
+    \leavevmode
+    \par
+    {
+    \fontsize{12truept}{12truept}\selectfont
+    \textgt{
+    \noindent
+    京都大学大学院工学研究科\\
+    都市社会工学専攻修士論文\\
+    令和５年２月\\
+    }
+    \\
+    Master's Thesis\\
+    Department of Urban Management Engineering\\
+    Graduate School of Engineering\\
+    Kyoto University\\
+    February 2023\\
+    }
+    \hrule
+    \vspace{25mm}
+    {
+    \fontsize{16truept}{36truept}\selectfont
+    \center{
+    修士論文の題目\\
+    \vspace{20mm}
+    京都大学大学院　工学研究科　○○○○工学専攻\\
+    ○○○講座　○○○分野\\
+    著者名\\
+    }
+    }
+\end{titlepage}
+
+
+\begin{abstract}
+    アブストラクトでございますわあああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+\end{abstract}
+
+
+\tableofcontents    %目次作成
+\clearpage
+
+%ページカウンター再設定
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\subfile{sub1}
+\subfile{sub2}
+
+
+\appendix     %ヘッダ変
+\subfile{appndix}
+
+\clearpage
+\chapter*{謝辞}     %ヘッダ変
+\thispagestyle{fancy}{
+\lhead{謝辞}
+\rhead{\bf\thepage}
+\cfoot{}
+}
+\addcontentsline{toc}{chapter}{謝辞}    %目次に表示
+感謝感謝
+
+
+\bibliography{sample.bib}
+\bibliographystyle{junsrt}
+\thispagestyle{fancy}{
+\lhead{参考文献}
+\rhead{\bf\thepage}
+\cfoot{}
+}
+
+
+\end{document}

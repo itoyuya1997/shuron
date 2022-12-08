@@ -1,138 +1,15 @@
-\documentclass[12pt,a4paper,onecolumn]{jsreport}
-\input preamble.tex
-
-\title{LaTeXテンプレート}
-\author{伊藤　裕也}
+\documentclass[main.tex]{subfiles}
 
 
-% \setcounter{page}{1}
-%目次にヘッダー表示
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{fancy}}}  
-\thispagestyle{fancy}{
-\lhead{目次}
-\pagenumbering{roman}
-\rhead{\bf\thepage}
-\cfoot{}
-}
 
 \begin{document}
-\mojiparline{40}
-\linesparpage{35}
-
-\date{}
-\maketitle
+\setcounter{chapter}{1}     %章番号-1に書き換える
 
 
-
-\begin{abstract}
-    アブストラクトでございますわあああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-\end{abstract}
-
-
-\tableofcontents    %目次作成
-\clearpage
-
-
-
-%ページカウンター再設定
-\pagenumbering{arabic}
-\setcounter{page}{1}
-
-\chapter{章}
+\chapter{1ページ内の文字数のチェック}
 \thispagestyle{fancy}
 あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやいゆえよらりるれろわいうえをあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやいゆえよらりるれろわいうえをあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやいゆえよらりるれろわいうえを
 
-\section{節}
-セクション
-
-\subsection{小節}
-サブセクション
-
-\subsubsection{小小節}
-サブサブセクション
-\begin{equation}
-    f(x) = \lim_{x\to\infty} \int_0^x g(t)\,dt
-    \label{eq:1a}
-\end{equation}
-\begin{align}
-    \sigma_{ij}=\lambda\delta_{ij}\varepsilon_{kk}+2\mu\varepsilon_{ij}
-    \label{eq:2b}
-\end{align}
-である。引用するなら\cref{eq:1a}で書く．複数式引用は\cref{eq:1a,eq:2b}で表記．\\
-引用は\cite{Nagai2020}で書く．\cite{akiyama2015m}とか
-
-\clearpage
-\section{図貼り付け}
-\subsection{1枚貼り}
-\begin{figure}[h]
-    \centering
-    \includegraphics[keepaspectratio, width=0.2\linewidth]{figfig.jpg}
-    \caption{SoundCloud}
-    \label{fig1}
-\end{figure}
-図の引用は\cref{fig1}で可能．
-
-\subsection{複数貼り}
-各図にナンバリングする場合はminipage環境に割り付ける．
-
-\begin{figure}[h]
-    \begin{minipage}[h]{0.45\linewidth}
-        \centering
-        \includegraphics[keepaspectratio, width=0.5\linewidth]{itunes.png}
-        \caption{itunes}
-        \label{fig:itunes}
-    \end{minipage}
-    \begin{minipage}[h]{0.45\linewidth}
-        \centering
-        \includegraphics[keepaspectratio, width=0.5\linewidth]{napster.jpeg}
-        \caption{Napster}
-        \label{fig:napster}
-    \end{minipage}
-\end{figure}
-
-サブキャプションを入れる場合は
-
-\begin{figure}[h]
-    \begin{minipage}[h]{0.45\linewidth}
-        \centering
-        \includegraphics[keepaspectratio, width=0.5\linewidth]{spotify.png}
-        \subcaption{Spotify}
-        \label{fig:音楽サブスクa}
-    \end{minipage}
-    \begin{minipage}[h]{0.45\linewidth}
-        \centering
-        \includegraphics[keepaspectratio, width=0.5\linewidth]{amazonmusic.png}
-        \subcaption{AmazonMusic}
-        \label{fig:音楽サブスクb}
-    \end{minipage}
-    \caption{音楽サブスク}
-    \label{fig:音楽サブスク}
-\end{figure}
-
-引用する場合は\cref{fig1}や\cref{fig:音楽サブスクa}とかで書く．
-
-
-\clearpage
-\section{表}
-\begin{table}[h]
-    \centering
-    \caption{表の例}
-    \begin{tabular}{|l|l|l|}
-    \hline
-      & A & B          \\ \hline
-    C & 1 & \textbf{2} \\ \hline
-    D & 3 & 4          \\ \hline
-    \end{tabular}
-    \label{tab:表の例}
-\end{table}
-
-表はcaptionの位置に注意する．引用は\cref{tab:表の例}
-
-\section{章・節の引用}
-\label{sho}
-\subsection{例えば}
-\label{exam}
-章を引用する場合は\cref{sho}とか\cref{exam}で引用．
 
 \section{行数,文字数チェック}
 \clearpage
@@ -144,21 +21,5 @@
 吾輩の主人は滅多めったに吾輩と顔を合せる事がない。職業は教師だそうだ。学校から帰ると終日書斎に這入ったぎりほとんど出て来る事がない。家のものは大変な勉強家だと思っている。当人も勉強家であるかのごとく見せている。しかし実際はうちのものがいうような勤勉家ではない。吾輩は時々忍び足に彼の書斎を覗のぞいて見るが、彼はよく昼寝ひるねをしている事がある。時々読みかけてある本の上に涎よだれをたらしている。彼は胃弱で皮膚の色が淡黄色たんこうしょくを帯びて弾力のない不活溌ふかっぱつな徴候をあらわしている。その癖に大飯を食う。大飯を食った後あとでタカジヤスターゼを飲む。飲んだ後で書物をひろげる。二三ページ読むと眠くなる。涎を本の上へ垂らす。これが彼の毎夜繰り返す日課である。吾輩は猫ながら時々考える事がある。教師というものは実に楽らくなものだ。人間と生れたら教師となるに限る。こんなに寝ていて勤まるものなら猫にでも出来ぬ事はないと。それでも主人に云わせると教師ほどつらいものはないそうで彼は友達が来る度たびに何とかかんとか不平を鳴らしている。
 \clearpage
 
-\section*{謝辞}     %ヘッダ変
-\thispagestyle{fancy}{
-\lhead{謝辞}
-\rhead{\bf\thepage}
-\cfoot{}
-}
-\addcontentsline{toc}{chapter}{謝辞}    %目次に表示
-    
-感謝感謝
 
-\bibliography{sample.bib}
-\bibliographystyle{junsrt}
-\thispagestyle{fancy}{
-\lhead{参考文献}
-\rhead{\bf\thepage}
-\cfoot{}
-}
 \end{document}

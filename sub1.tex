@@ -1,0 +1,112 @@
+\documentclass[main.tex]{subfiles}
+
+
+
+\begin{document}
+\setcounter{chapter}{0}     %章番号-1に書き換える
+
+
+\chapter{章節の分け方とか図表の張り込みとか}
+\thispagestyle{fancy}
+あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやいゆえよらりるれろわいうえをあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやいゆえよらりるれろわいうえをあいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやいゆえよらりるれろわいうえを
+
+
+\section{節}
+セクション
+
+
+\subsection{小節}
+サブセクション
+
+
+\subsubsection{小小節}
+サブサブセクション
+\begin{equation}
+    f(x) = \lim_{x\to\infty} \int_0^x g(t)\,dt
+    \label{eq:1a}
+\end{equation}
+\begin{align}
+    \sigma_{ij}=\lambda\delta_{ij}\varepsilon_{kk}+2\mu\varepsilon_{ij}
+    \label{eq:2b}
+\end{align}
+引用するなら\cref{eq:1a}で書く．複数式引用は\cref{eq:1a,eq:2b}で表記．\\
+引用は\cite{Nagai2020}で書く．\cite{akiyama2015m}とか
+
+\clearpage
+\section{図貼り付け}
+\subsection{1枚貼り}
+\begin{figure}[h]
+    \centering
+    \includegraphics[keepaspectratio, width=0.2\linewidth]{figfig.jpg}
+    \caption{SoundCloud}
+    \label{fig1}
+\end{figure}
+図の引用は\cref{fig1}で可能．
+
+
+\subsection{複数貼り}
+各図にナンバリングする場合はminipage環境に割り付ける．
+
+\begin{figure}[h]
+    \begin{minipage}[h]{0.45\linewidth}
+        \centering
+        \includegraphics[keepaspectratio, width=0.5\linewidth]{itunes.png}
+        \caption{itunes}
+        \label{fig:itunes}
+    \end{minipage}
+    \begin{minipage}[h]{0.45\linewidth}
+        \centering
+        \includegraphics[keepaspectratio, width=0.5\linewidth]{napster.jpeg}
+        \caption{Napster}
+        \label{fig:napster}
+    \end{minipage}
+\end{figure}
+
+サブキャプションを入れる場合は
+
+\begin{figure}[h]
+    \begin{minipage}[h]{0.45\linewidth}
+        \centering
+        \includegraphics[keepaspectratio, width=0.5\linewidth]{spotify.png}
+        \subcaption{Spotify}
+        \label{fig:音楽サブスクa}
+    \end{minipage}
+    \begin{minipage}[h]{0.45\linewidth}
+        \centering
+        \includegraphics[keepaspectratio, width=0.5\linewidth]{amazonmusic.png}
+        \subcaption{AmazonMusic}
+        \label{fig:音楽サブスクb}
+    \end{minipage}
+    \caption{音楽サブスク}
+    \label{fig:音楽サブスク}
+\end{figure}
+
+引用する場合は\cref{fig1}や\cref{fig:音楽サブスクa}とかで書く．
+
+\clearpage
+
+
+\section{表}
+\begin{table}[h]
+    \centering
+    \caption{表の例}
+    \begin{tabular}{|l|l|l|}
+    \hline
+      & A & B          \\ \hline
+    C & 1 & \textbf{2} \\ \hline
+    D & 3 & 4          \\ \hline
+    \end{tabular}
+    \label{tab:表の例}
+\end{table}
+
+表はcaptionの位置に注意する．引用は\cref{tab:表の例}
+
+
+\section{章・節の引用}
+\label{sho}
+\subsection{例えば}
+\label{exam}
+章を引用する場合は\cref{sho}とか\cref{exam}で引用．
+
+
+\end{document}

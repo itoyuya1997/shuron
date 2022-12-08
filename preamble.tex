@@ -1,7 +1,5 @@
 %%余白設定
-\usepackage[top=25truemm,bottom=20truemm,left=20truemm,right=25truemm]{geometry}
-
-
+\usepackage[top=25truemm,bottom=25truemm,left=25truemm,right=25truemm]{geometry}
 
 %ヘッダー・フッター
 \usepackage{fancyhdr}
@@ -160,4 +158,10 @@
 \renewcommand*{\l@subsubsection} {\@dottedtocline{3}{3zw}{6zw}}
 \makeatother
 
-%表紙作成
+%svg貼り付け
+%Inkscapeをインストール,パスを通す，コンパイル時オプションで"-shell-escape"を"%DOC%"の前につける
+\usepackage{svg}
+\usepackage{wrapfig}
+
+%本文を複数ファイルに分けてコンパイル&それぞれでコンパイル
+\usepackage{subfiles}
