@@ -1,4 +1,4 @@
-\documentclass[11truept,a4paper,onecolumn,dvipdfmx]{jsreport}
+\documentclass[11truept,a4paper,uplatex,onecolumn,dvipdfmx]{jsreport}
 \input preamble.tex
 
 
@@ -19,11 +19,16 @@
 
 \begin{titlepage}
     \vspace{15mm}
-    \begin{wrapfigure}{r}{0.45\linewidth}
+    \begin{wrapfigure}{r}{0.45\linewidth}  % JPEGに直して貼ってみた
         \centering
-        \hspace{25mm}
-        \includesvg[keepaspectratio,width=0.45\linewidth]{KUlogo.svg}
+        \vspace{5mm}\hspace{25mm}
+        \includegraphics[keepaspectratio,width=0.45\linewidth]{KUlogo.jpeg}
     \end{wrapfigure}
+    % \begin{wrapfigure}{r}{0.45\linewidth}  % SVG貼るとき
+    %     \centering
+    %     \hspace{25mm}
+    %     \includesvg[keepaspectratio,width=0.45\linewidth]{KUlogo.svg}
+    % \end{wrapfigure}
     \leavevmode
     \par
     {
@@ -60,6 +65,11 @@
     アブストラクトでございますわあああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
 \end{abstract}
 
+%ヘッダー・フッター
+\pagestyle{fancy}
+\lhead{\leftmark}
+\rhead{\bf\thepage}
+\cfoot{}
 
 \tableofcontents    %目次作成
 \clearpage
@@ -72,20 +82,21 @@
 \subfile{sub2}
 
 
-\appendix     %ヘッダ変
+\appendix
+\renewcommand{\chaptermark}[1]{\markboth{付録\ \normalfont\thechapter\quad~#1}{}}    % Appendix用のヘッダ
 \subfile{appndix}
 
 \clearpage
-\chapter*{謝辞}     %ヘッダ変
+\chapter*{謝辞}
 \thispagestyle{fancy}{
-\lhead{謝辞}
-\rhead{\bf\thepage}
-\cfoot{}
+    \lhead{謝辞}
+    \rhead{\bf\thepage}
+    \cfoot{}
 }
 \addcontentsline{toc}{chapter}{謝辞}    %目次に表示
 感謝感謝
 
-
+\clearpage
 \bibliography{sample.bib}
 \bibliographystyle{junsrt}
 \thispagestyle{fancy}{
